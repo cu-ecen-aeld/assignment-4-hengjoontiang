@@ -12,9 +12,6 @@ jobs:
         timeout-minutes: 120
         steps:
           - name: Checkout submodules
-            with:
-                 repository: github.com/cu-ecen-aeld/assignment-4-hengjoontiang.git
-                 ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
           - uses: actions/checkout@v2
           - name: web-factory- 
             with:
