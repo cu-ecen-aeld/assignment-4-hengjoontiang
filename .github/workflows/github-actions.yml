@@ -11,15 +11,17 @@ jobs:
         runs-on: self-hosted
         timeout-minutes: 120
         steps:
-          - uses: webfactory/ssh-agent@v0.5.3
-            with:
-                ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
             name: Checkout submodules
           - uses: actions/checkout@v4
           - with:
                  repository: github.com/cu-ecen-aeld/assignment-4-hengjoontiang
                  ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
-            name: submodule update
+          - name: submodule update
+            uses: webfactory/ssh-agent@v0.5.3
+            with:
+                ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+            
+            
             run: git submodule update --init --recursive
           - name: Run full test
             env:
