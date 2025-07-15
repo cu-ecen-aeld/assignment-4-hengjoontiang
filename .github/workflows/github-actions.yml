@@ -14,7 +14,7 @@ jobs:
           - name: check out
             uses: actions/checkout@v2
             with:
-                 #repository: ${{github.repository_owner}} / ${{github.repository}}
+                 repository: git / "github.com/cu-ecen-aeld/assignment-4-hengjoontiang.git"
                  ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
           - name: submodule update
             run: git submodule update --init --recursive
