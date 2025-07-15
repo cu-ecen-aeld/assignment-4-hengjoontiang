@@ -19,7 +19,7 @@ jobs:
               GIT_SSH_COMMAND: "ssh -o StrictHostKeyChecking=no"
           run: ./full-test.sh
           name: Cleanup
-            if: always()
+          if: always()
           run: 
               ssh-add -D
 
