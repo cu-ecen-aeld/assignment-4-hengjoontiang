@@ -12,14 +12,16 @@ jobs:
         timeout-minutes: 120
         steps:
           - name: Checkout submodules
-          - uses: actions/checkout@v4
-          - with:
+            with:
                  repository: github.com/cu-ecen-aeld/assignment-4-hengjoontiang.git
                  ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          - uses: actions/checkout@v4
+          - 
           - name: web-factory- 
-          - uses: webfactory/ssh-agent@v0.5.3
-          - with:
+            with:
                  ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          - uses: webfactory/ssh-agent@v0.5.3
+          - 
           - name: submodule update
           - run: git submodule update --init --recursive
           - name: Run full test
