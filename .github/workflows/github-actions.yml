@@ -17,7 +17,8 @@ jobs:
                 ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
           - uses: actions/checkout@v4
           - name: Checkout submodules
-            with repository: github.com/cu-ecen-aeld/assignment-4-hengjoontiang
+            with:
+                 repository: github.com/cu-ecen-aeld/assignment-4-hengjoontiang
                  ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
             run: git submodule update --init --recursive
           
