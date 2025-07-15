@@ -11,7 +11,7 @@ jobs:
         runs-on: self-hosted
         timeout-minutes: 120
         steps:
-            name: Checkout submodules
+          - name: Checkout submodules
           - uses: actions/checkout@v4
           - with:
                  repository: github.com/cu-ecen-aeld/assignment-4-hengjoontiang
@@ -22,7 +22,7 @@ jobs:
                 ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
             
             
-            run: git submodule update --init --recursive
+          - run: git submodule update --init --recursive
           - name: Run full test
             env:
               GIT_SSH_COMMAND: "ssh -o StrictHostKeyChecking=no"
