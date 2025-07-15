@@ -14,12 +14,12 @@ jobs:
           - name: Checkout submodules
           - uses: actions/checkout@v4
           - with:
-                 repository: github.com/cu-ecen-aeld/assignment-4-hengjoontiang
+                 repository: github.com/cu-ecen-aeld/assignment-4-hengjoontiang.git
                  ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
-          #- name: web-factory- 
-          #- uses: webfactory/ssh-agent@v0.5.3
-          #- with:
-          #       ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          - name: web-factory- 
+          - uses: webfactory/ssh-agent@v0.5.3
+          - with:
+                 ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
           - name: submodule update
           - run: git submodule update --init --recursive
           - name: Run full test
@@ -28,5 +28,5 @@ jobs:
           - run: ./full-test.sh
           - name: Cleanup
             if: always()
-          -  run: |
+          - run: |
               ssh-add -D
