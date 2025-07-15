@@ -15,7 +15,7 @@ jobs:
             with:
                  repository: github.com/cu-ecen-aeld/assignment-4-hengjoontiang.git
                  ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
-          - uses: actions/checkout@v4
+          - uses: actions/checkout@v2
           - 
           - name: web-factory- 
             with:
