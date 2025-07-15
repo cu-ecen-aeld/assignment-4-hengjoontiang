@@ -13,10 +13,6 @@ jobs:
         steps:
           - name: Checkout submodules
           - uses: actions/checkout@v2
-          - name: web-factory- 
-            with:
-                 ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-          - uses: webfactory/ssh-agent@v0.5.3
           - name: submodule update
           - run: git submodule update --init --recursive
           - name: Run full test
