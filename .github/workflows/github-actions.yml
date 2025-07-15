@@ -11,15 +11,16 @@ jobs:
         runs-on: self-hosted
         timeout-minutes: 120
         steps:
-          uses: actions/checkout@v2
-          name: submodule update
-          run: git submodule update --init --recursive
-          name: Run full test
-          env:
+          - name: check out
+            uses: actions/checkout@v2
+          - name: submodule update
+            run: git submodule update --init --recursive
+          - name: full_test
+            env:
               GIT_SSH_COMMAND: "ssh -o StrictHostKeyChecking=no"
-          run: ./full-test.sh
-          name: Cleanup
-          if: always()
-          run: 
+            run: ./full-test.sh
+          - name: Cleanup
+            if: always()
+            run: 
               ssh-add -D
 
