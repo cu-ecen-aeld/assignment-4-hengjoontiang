@@ -14,7 +14,7 @@ jobs:
           - name: check out
             uses: actions/checkout@v2
             with:
-                 repository: github.com/cu-ecen-aeld/assignment-4-hengjoontiang.git
+                 repository: ${{owner}} / ${{ github.repo}}
                  ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
           - name: submodule update
             run: git submodule update --init --recursive
@@ -22,6 +22,10 @@ jobs:
             env:
               GIT_SSH_COMMAND: "ssh -o StrictHostKeyChecking=no"
             run: ./full-test.sh
+          - name: web-factory-
+            with:
+                 ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          - uses: webfactory/ssh-agent@v0.5.3
           - name: Cleanup
             if: always()
             run: 
