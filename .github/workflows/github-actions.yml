@@ -16,10 +16,14 @@ jobs:
             with:
                  repository: ${{ github.repository }}
                  ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          - name: Setup SSH Agent and Key
+            uses: webfactory/ssh-agent@v0.9.0
+            with:
+                 ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
           - name: Configure SSH
+          #eval `ssh-agent -s`
+          #ssh-add - <<< "${{ secrets.SSH_PRIVATE_KEY }}"
             run: |
-                eval `ssh-agent -s`
-                ssh-add - <<< "${{ secrets.SSH_PRIVATE_KEY }}"
                 echo "SSH_AUTH_SOCK=${SSH_AUTH_SOCK}" >> $GITHUB_ENV
           - name: submodule update
             run: git submodule update --init --recursive
